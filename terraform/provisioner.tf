@@ -34,7 +34,7 @@ resource "aws_instance" "elasticsearch" {
 
   provisioner "local-exec" {
     command = <<EOT
-        echo "[${var.os}_${count.index}]" >> hosts
+        echo "[node_${count.index}]" >> hosts
         echo "${self.private_ip}" >> hosts
         echo "" >> hosts
     EOT
