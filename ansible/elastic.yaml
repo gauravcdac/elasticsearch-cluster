@@ -1,4 +1,4 @@
-- hosts: master_node
+- hosts: node_1
 
   vars:
     es_heap_size: "1g"
@@ -13,7 +13,7 @@
     es_plugins:
      - plugin: ingest-attachment
 
-- hosts: node_1
+- hosts: node_2
  
   vars:
     es_data_dirs:
@@ -29,7 +29,7 @@
     es_plugins:
       - plugin: ingest-attachment
 
-- hosts: node_2
+- hosts: node_3
  
   vars:
     es_config:
