@@ -1,0 +1,2 @@
+elastic_host: {ip_address}
+elastic_port: 9200

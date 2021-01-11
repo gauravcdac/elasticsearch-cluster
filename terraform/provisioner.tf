@@ -24,19 +24,11 @@ resource "aws_instance" "elasticsearch" {
     Name = "ElastucSearchServer"
   }
 
-  provisioner "remote-exec" {
-    inline = [
-                "pwd",
-                "sudo wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.9.1-linux-x86_64.tar.gz",
-                "sudo tar -xvf elasticsearch-7.9.1-linux-x86_64.tar.gz -C /opt/",
-                "sudo useradd -m -p elasticsearch elasticsearch"
-             ]
-
   provisioner "local-exec" {
     command = <<EOT
-        echo "[node_${count.index}]" >> hosts
-        echo "${self.private_ip}" >> hosts
-        echo "" >> hosts
+        echo "[elk]" >> hosts.yml
+        echo "${self.private_ip}" >> hosts.yml
+        echo "" >> hosts.yml
     EOT
   }
 
@@ -45,7 +37,6 @@ resource "aws_instance" "elasticsearch" {
       user        = "ubuntu"
       private_key = file("Elastic-KeyPair.pem")
       host        = aws_instance.elasticsearch.private_ip
-}
 }
 }
 

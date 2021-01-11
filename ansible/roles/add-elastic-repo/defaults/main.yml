@@ -1,0 +1,5 @@
+---
+# defaults file for add-elastic-repo
+
+elastic_psk_url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+elastic_repo: https://artifacts.elastic.co/packages/7.x/apt

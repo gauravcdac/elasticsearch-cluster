@@ -1,0 +1,12 @@
+---
+
+# This playbook  will deploy elasticearch
+- hosts: elk
+  become: yes
+  vars_files:
+  - ../vars/credentials.yml
+  - ../vars/main.yml
+  roles:
+  - ../roles/add-elastic-repo
+  - ../roles/java
+  - ../roles/elasticsearch
